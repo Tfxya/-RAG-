@@ -1,0 +1,46 @@
+# ==========================================================
+# RAG-LLM-System 依赖清单
+# 以下版本约束均在 Python 3.13 环境下安装并随项目验证通过
+# ==========================================================
+
+# ---------- 界面层 ----------
+# Web 界面框架（聊天组件、文件上传、侧栏等）
+# 锁定 1.35–1.40：页面样式基于 1.39 的 data-testid DOM 结构定制，
+# 升级到其他大版本可能导致自定义样式失效
+streamlit>=1.35.0,<1.40.0
+
+# ---------- RAG 框架（LangChain 0.1.x 系列） ----------
+# LangChain 元包（连带安装 langchain-community，便于后续扩展 Loader / Retriever）
+langchain>=0.1.20,<0.2.0
+# LangChain 核心组件（Prompt / Runnable / Document / MessageHistory，项目直接引用）
+langchain-core>=0.1.52,<0.2.0
+# Chroma 向量库集成（项目直接引用，连带安装 chromadb）
+langchain-chroma>=0.1.2,<0.2.0
+# 文本切分器（RecursiveCharacterTextSplitter，项目直接引用）
+langchain-text-splitters>=0.0.2,<0.1.0
+# 本地持久化向量数据库
+chromadb>=0.4.24,<0.5.0
+
+# ---------- 大模型接入 ----------
+# 通过 OpenAI 兼容接口调用智谱 GLM（glm-4.5 对话 + embedding-3 向量）
+# 实测版本 3.5.0；>=1.0 即可使用 client.chat.completions / client.embeddings
+openai>=1.0.0,<4.0.0
+
+# ---------- 基础工具 ----------
+# 读取 .env 中的 ZHIPUAI_API_KEY
+python-dotenv>=1.0.0
+# Chroma 0.4.x 及 hnswlib 尚不兼容 numpy 2.x，必须锁定 1.x
+numpy>=1.24.0,<2.0.0
+# LangChain / chromadb / openai 的数据模型层，锁定大版本避免破坏性升级
+pydantic>=2.5.0,<3.0.0
+
+# ---------- 可选扩展依赖 ----------
+# 当前代码仅支持 TXT 上传；以下包为多格式解析预留，
+# 接入对应 LangChain Loader（PyPDFLoader / Docx2txtLoader 等）即可启用
+pypdf>=4.0.0
+python-docx>=1.1.0
+openpyxl>=3.1.2
+markdown>=3.5.2
+
+# 说明：aiohttp / requests / tiktoken / pillow / anyio 等为
+# langchain、chromadb、streamlit 的传递依赖，pip 会自动安装，无需显式声明。

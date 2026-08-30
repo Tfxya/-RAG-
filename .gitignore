@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+*.pyo
+
+venv/
+.venv/
+env/
+
+vector_db/
+chat_history/
+data/
+
+# 环境变量与敏感信息（含真实 API Key，严禁提交）
+.env
+
+# 运行时生成的本地数据（向量库、去重记录）
+chroma_db/
+md5.text
+
+.idea/
+.vscode/
+.DS_Store
