@@ -24,7 +24,13 @@
 **企业智能服务**（基于知识库的 RAG 流式问答）：
 
 <div align="left">
-  <img src="./assets/ui_chat.png" width="720" alt="智能服务页面">
+  <img src="./assets/ui_chat1.png" width="720" alt="智能服务多轮问答示例">
+</div>
+
+**历史对话查询**（可让客服输出之前的全部问答记录）：
+
+<div align="left">
+  <img src="./assets/ui_chat2.png" width="720" alt="历史对话查询示例">
 </div>
 
 ---
